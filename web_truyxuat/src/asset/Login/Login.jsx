@@ -2,10 +2,9 @@ import React,{ useState } from "react"
 import './Login.css'
 const initFormValue = {
 	firstName: "",
-	lastName: "",
 	email:"",
 	password:"",
-	confirmPassword:"",
+	
 };
 
 const isEmptyValue = (value) => {
@@ -27,10 +26,6 @@ const validateForm = () => {
 	}
 	
 	if(isEmptyValue(formValue.firstName)){
-		error["lastName"] = "Last Name is required";
-	}
-
-	if(isEmptyValue(formValue.firstName)){
 		error["emailName"] = "Email Name is required";
 	}else{
 		if(!isEmailValid(formValue.email)){
@@ -43,10 +38,10 @@ const validateForm = () => {
 	}
 
 	if(isEmptyValue(formValue.confirmPassword)){
-		error["confirmPassword"] = "Confirm Password is required";
-	}else if(formValue.confirmPassword !== formValue.password){
-		error["confirmPassword"] = "Confirm Password not match";
-	}
+		error["confirmPassword"] = "Confirm Password is required";}
+	// }else if(formValue.confirmPassword !== formValue.password){
+	// 	error["confirmPassword"] = "Confirm Password not match";
+	// }
 
 	setFormError(error);
 	return Object.keys(error).length === 0;
@@ -76,11 +71,11 @@ console.log(formError);
 
  return( <div className="register-page" > 
 		<div className="register-form-container"> 
-			<h1 className="title">Register account</h1>
+			<h1 className="title">Đăng kí</h1>
 			<form onSubmit = {handleSubmit}> 
-				<div>
+				<div className="mb-2">
 					<label htmlFor="first-name" className="form-label">
-					FirstName
+					Họ tên
 					</label>
 					<input
 						id="first-name"
@@ -94,25 +89,10 @@ console.log(formError);
 						<div className = "error-feedback"> {formError.firstName}</div>
 					)}
 				</div>
-				<div className="mb-2">
-					<label htmlFor="first-name" className="form-label">
-					LastName
-					</label>
-					<input
-						id="last-name"
-						className="form-control"
-						type="text"
-						name="lastName"
-						value = {formValue.lastName}
-						onChange={handleChange}
-					/>
-					{formError.lastName && (
-						<div className = "error-feedback"> {formError.lastName}</div>
-					)}
-				</div>
+				
 				<div className="mb-2">
 					<label htmlFor="email" className="form-label">
-					Email
+					Email 
 					</label>
 					<input
 						id="email"
@@ -142,7 +122,7 @@ console.log(formError);
 						<div className = "error-feedback"> {formError.password}</div>
 					)}
 				</div>
-				<div className="mb-2">
+				{/* <div className="mb-2">
 					<label htmlFor="confirm-password" className="form-label">
 					Confirm Password
 					</label>
@@ -157,7 +137,7 @@ console.log(formError);
 					{formError.confirmPassword && (
 						<div className = "error-feedback"> {formError.confirmPassword}</div>
 					)}
-				</div>
+				</div> */}
 				<button tyoe="submit" className="submit-btn">
 				Register
 				</button>

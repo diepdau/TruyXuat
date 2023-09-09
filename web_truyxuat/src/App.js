@@ -5,9 +5,7 @@ import Login from './asset/Login/Login';
 function App() {
 
   return (
-    <div
-    
-    >
+    <div>
       <Login />
     </div>
   );
