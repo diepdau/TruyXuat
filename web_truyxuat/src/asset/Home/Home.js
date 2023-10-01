@@ -1,10 +1,12 @@
 import React from 'react'
 import Navbar from '../Navbar/Navbar'
+import Sidebar0 from '../Sidebar0/Sidebar'
 
 function Home({Toggle}) {
   return (
     <div className=' px-3'>
-        <Navbar Toggle={Toggle}/>
+        <Sidebar0/>
+        {/* <Navbar Toggle={Toggle}/>
         <div className='container-fluid'>
             <div className='row g-3 my-2'>
                 <div className='col-md-3 p-1'>
@@ -78,7 +80,7 @@ function Home({Toggle}) {
                 <td>@twitter</td>
                 </tr>
             </tbody>
-        </table>
+        </table> */}
     </div>
   )
 }
