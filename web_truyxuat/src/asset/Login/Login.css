@@ -56,8 +56,8 @@
   cursor: pointer;
   box-shadow: 1px 1px 21px rgb(13 149 92 / 20%);
 }
-.form-control:active {
-  border: 2px solid #0D955C; /* Loại bỏ box-shadow khi click */
+.mb-2 input:active {
+  border: 1px 1px 21px solid purple;
 }
 
 .submit-btn {

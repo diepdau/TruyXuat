@@ -1,6 +1,6 @@
 import React from 'react'
-import 'bootstrap/js/dist/dropdown'
-import 'bootstrap/js/dist/collapse'
+// import 'bootstrap/js/dist/dropdown'
+// import 'bootstrap/js/dist/collapse'
 function Navbar({Toggle}){
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-transparents">

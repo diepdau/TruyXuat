@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import logo from '../Img/Desktop/logo.png'
+import {loginApi} from "../service/user_service";
 
 const initFormValue = {
   email: "",
@@ -19,11 +20,12 @@ const isEmailValid = (email) => {
   return /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(email);
 };
 
-export default function RegisterPage() {
+export default function RegisterPage({setToken}) {
   const [formValue, setFormValue] = useState(initFormValue);
   const [formError, setFormError] = useState({});
   const [showPassword, setShowPassword] = useState(false);
-
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const validateForm = () => {
     const error = {};
 
@@ -64,6 +66,15 @@ export default function RegisterPage() {
     }
   };
 
+  
+  const handleLogin = async()=>{
+    let res = await loginApi(email, password);
+    if(res && res.token)
+    {
+      localStorage.setItem("token", res.token)
+    }
+    console.log("check ", res)
+  }
   return (
     <div className="register-page">
       
@@ -78,7 +89,7 @@ export default function RegisterPage() {
             <label htmlFor="email" className="form-label">
               Email hoặc số điện thoại
             </label>
-            <input
+            <input 
               id="email"
               className="form-control"
               type="text"
@@ -95,13 +106,13 @@ export default function RegisterPage() {
               Password
             </label>
             <div className="password-input-container">
-              <input
+              <input 
                 id="password"
                 className="form-control"
                 type={showPassword ? "text" : "password"}
                 name="password"
                 value={formValue.password}
-                onChange={handleChange}
+               onChange={handleChange}
               />
               <div className="toggle-password" onClick={toggleShowPassword}>
                 <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
@@ -112,7 +123,7 @@ export default function RegisterPage() {
             )}
 			<Link to="/forgot-password" className="forgot-password">Quên mật khẩu?</Link>
           </div>
-          <button type="submit" className="submit-btn">
+          <button onClick={()=>handleLogin } type="submit" className="submit-btn">
            <Link to="/home" style={{ textDecoration: 'none', color: 'inherit' }}>Đăng nhập</Link> 
           </button>
 		  <div className="or-divider">
