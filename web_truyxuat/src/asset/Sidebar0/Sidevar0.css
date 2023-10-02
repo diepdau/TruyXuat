@@ -1,0 +1,12 @@
+
+.nav-link{border-radius:0px !important;transition:all 0.5s; margin-bottom: 40%; width:100px;flex-direction:column}
+.nav-link small{font-size:12px}
+.nav-link:hover{background-color: #52525240 !important}
+.nav-link .fa{transition: all 1s;font-size:20px}
+.nav-link:hover .fa{transform: rotate(360deg)}
+.nav-item{
+    margin-bottom: 40%;
+}
+.px-3{
+    padding: 0!important;
+}
